@@ -1,0 +1,46 @@
+npm i nodemon -g
+instalar o insomnia
+--
+npm init -y
+npm i express
+-> nodemon --inspect ./index.js 3000
+
+Enunciado --------------------------------------------------------
+escopo 
+    id -> nextId
+    cliente -> cliente
+    produto -> pizza
+    value -> 10.50
+    timestamp -> newDate()
+    entregue -> false
+
+para todos considerar apenas pedidos já entregues
+
+(x)_1_post- cria um pedido com os campos a cima 
+(x)_2_put- atualiza o pedido atravez do ID os campos “cliente”, “produto”, “valor” e “entregue” são alterados.
+(x)_3_patch- atualiza o pedido para entregue.
+(x)_4_delete- exclui 1 pedido atravez do id
+(x)_5_get- consulta 1 pedido atravez do id 
+(x)_6_post- atraves do cliente retorna a soma total das compras já realizadas  
+(x)_7_post- atraves do produto retorna a soma total das vendas já realizadas  
+( )_8_get- atravez de x retorna [“Pizza A - 30”, “Pizza B – 27”, “Pizza C – 25”]
+
+caminhos https
+item 1- pedidos/
+item 2- pedidos/
+item 3- pedidos/
+item 4- pedidos/:id
+item 5- pedidos/:id
+item 6- pedidos/historicoCliente
+item 7- pedidos/historicoPedido
+item 8- pedidos/maisVendidos/:x
+
+--functions--
+postRequest
+putUpdade
+patchState
+deleteRequest
+getRequest
+postHistoryClient
+postHistoryRequest
+getBestSellers
