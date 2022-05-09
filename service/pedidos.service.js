@@ -1,5 +1,4 @@
 import pedidosRepository from "../repository/pedidos.repository.js"
-//tem as regras de negocio e chama o repository para o caso de leitura e escrita de arquivo
 
 async function createRulesRequest({ cliente, produto, valor }) {
     const data = await pedidosRepository.readFileFunction()
@@ -55,6 +54,7 @@ async function searchRulesRequest(id) {
 
 async function spendRulesClientRequest(cliente) {
     const data = await pedidosRepository.readFileFunction()
+    data.pedidos = check(data)
     let pedidosCliente = data.pedidos.filter(pedido => pedido.cliente === cliente)
     if (pedidosCliente.length === 0) { return 0 } else {
         let valueSpend = 0
@@ -71,7 +71,6 @@ async function spendRulesProductRequest(produto) {
     return `O valor vendido de ${produto} foi R$: ${valueSpend}`
 }
 
-
 async function bestSellers(params) {
     const data = await pedidosRepository.readFileFunction()
     let arrBestSelleres = helper(data)
@@ -87,11 +86,12 @@ async function bestSellers(params) {
 }
 
 function helperValuePizza(data, pizza) {
-    let pedidosproduto = data.pedidos.filter(pedido => pedido.produto === pizza)
+    let checkArr = check(data)
+    let pedidosproduto = checkArr.filter(pedido => pedido.produto === pizza)
     if (pedidosproduto.length === 0) { return 0 } else {
         let valueSpend = 0
         pedidosproduto.forEach(element => {
-            valueSpend += element.valor
+            valueSpend++
         });
         return valueSpend
     }
@@ -103,6 +103,7 @@ function helper(data) {
     data.pedidos.forEach(item => {
         if (arrTypesPizza.includes(item.produto)) {} else { arrTypesPizza.push(item.produto) }
     })
+    data.pedidos = check(data)
     arrTypesPizza.forEach(pizza => {
         anser.push({
             pizza: pizza,
@@ -112,6 +113,12 @@ function helper(data) {
     anser = anser.sort((a, b) => b.valor - a.valor)
     return anser
 }
+
+function check(data) {
+    let checkArr = data.pedidos.filter(pedido => pedido.entregue === true)
+    return checkArr
+}
+
 
 export default {
     createRulesRequest,

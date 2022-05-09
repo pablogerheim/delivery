@@ -1,5 +1,5 @@
 {
-  "nextId": 502,
+  "nextId": 501,
   "pedidos": [
     {
       "id": 1,
@@ -3993,14 +3993,6 @@
       "valor": 32,
       "entregue": true,
       "timestamp": "2021-05-02T19:48:09.767Z"
-    },
-    {
-      "id": 501,
-      "cliente": "Pablo",
-      "produto": "Pizza Napolitana",
-      "valor": 28,
-      "entregue": false,
-      "timestamp": "2022-05-05T19:05:14.885Z"
     }
   ]
 }

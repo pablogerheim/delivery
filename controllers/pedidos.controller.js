@@ -1,6 +1,4 @@
 import pedidosService from "../service/pedidos.service.js"
-// faz a validação chama o servise e responde e requisição
-
 
 async function postRequest(req, res) {
     try {
