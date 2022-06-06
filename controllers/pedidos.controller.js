@@ -54,14 +54,15 @@ async function deleteRequest(req, res) {
 }
 
 async function getRequest(req, res) {
+    console.log(req.params.id)
     try {
-        if (req.params.id === undefined) {
+        if (req.params.id === null) {
             throw new Error("ID é obrigatório")
         }
         const anser = await pedidosService.searchRulesRequest(req.params.id)
         res.send(anser)
     } catch (err) {
-        res.send("ID é obrigatório")
+        res.send(err)
     }
 }
 

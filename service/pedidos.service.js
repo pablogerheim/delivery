@@ -68,7 +68,8 @@ async function spendRulesClientRequest(cliente) {
 async function spendRulesProductRequest(produto) {
     const data = await pedidosRepository.readFileFunction()
     let valueSpend = helperValuePizza(data, produto)
-    return `O valor vendido de ${produto} foi R$: ${valueSpend}`
+    let helperProduto = data.pedidos.find(p => p.produto)
+    return `O valor vendido de ${produto} foi R$: ${valueSpend*helperProduto.valor}`
 }
 
 async function bestSellers(params) {
@@ -127,5 +128,6 @@ export default {
     deleteRulesRequest,
     spendRulesClientRequest,
     spendRulesProductRequest,
-    bestSellers
+    bestSellers,
+    searchRulesRequest
 }
